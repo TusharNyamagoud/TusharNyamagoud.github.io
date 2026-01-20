@@ -1,0 +1,618 @@
+/* Tavern Portfolio - Pixel Art Aesthetic */
+
+:root {
+    --primary-brown: #6B5344;
+    --dark-brown: #4A3F38;
+    --light-brown: #9B8B7E;
+    --cream: #E8DDD0;
+    --dark-text: #3D3530;
+    --gold: #B8956A;
+    --wood-dark: #5C4E47;
+    --wood-light: #8B7D76;
+    --accent-orange: #C97E4A;
+    --accent-red: #A85C5C;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #F0EBE5;
+    background-image: url('tavern_vector_bg.png');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    color: var(--dark-text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Pixel art effect - crisp rendering */
+* {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+/* Background with tavern texture */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        repeating-linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.03) 0px,
+            rgba(0, 0, 0, 0.03) 1px,
+            transparent 1px,
+            transparent 2px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.03) 0px,
+            rgba(0, 0, 0, 0.03) 1px,
+            transparent 1px,
+            transparent 2px
+        );
+    pointer-events: none;
+    z-index: 1;
+}
+
+.tavern-container {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header - Tavern Sign */
+.tavern-header {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #7A6B62 0%, #8B7D76 100%);
+    border: 3px solid var(--dark-brown);
+    border-radius: 6px;
+    margin-bottom: 40px;
+    box-shadow: 
+        0 3px 0 var(--dark-brown),
+        0 6px 0 rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    position: relative;
+}
+
+.tavern-header::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 20px;
+    background-color: var(--dark-brown);
+    border: 2px solid var(--dark-brown);
+    border-radius: 4px 4px 0 0;
+}
+
+.sign-post {
+    animation: sway 3s ease-in-out infinite;
+}
+
+@keyframes sway {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(1deg); }
+}
+
+.tavern-title {
+    font-size: 2.5rem;
+    color: var(--gold);
+    text-shadow: 
+        2px 2px 0 var(--dark-brown),
+        4px 4px 0 rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.tavern-subtitle {
+    font-size: 1.2rem;
+    color: var(--cream);
+    text-shadow: 1px 1px 0 var(--dark-brown);
+}
+
+.tavern-tagline {
+    font-size: 0.8rem;
+    color: var(--gold);
+    text-shadow: 1px 1px 0 var(--dark-brown);
+    margin-top: 8px;
+    opacity: 0.9;
+}
+
+/* Main Content */
+.tavern-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    flex: 1;
+    margin-bottom: 40px;
+}
+
+.tavern-main .full-width {
+    grid-column: 1 / -1;
+}
+
+.tavern-section {
+    background: linear-gradient(135deg, #F5F0E8 0%, #EFE9E0 100%);
+    border: 3px solid var(--primary-brown);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 
+        0 3px 0 var(--dark-brown),
+        0 6px 0 rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.tavern-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 2px,
+            rgba(139, 69, 19, 0.05) 2px,
+            rgba(139, 69, 19, 0.05) 4px
+        );
+    pointer-events: none;
+}
+
+.panel-header {
+    background: linear-gradient(90deg, var(--primary-brown) 0%, var(--light-brown) 100%);
+    padding: 15px 20px;
+    border-bottom: 3px solid var(--dark-brown);
+}
+
+.panel-header h2 {
+    font-size: 1.5rem;
+    color: var(--gold);
+    text-shadow: 1px 1px 0 var(--dark-brown);
+}
+
+.panel-content {
+    padding: 25px;
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+
+.intro-text {
+    font-weight: bold;
+    color: var(--accent-red);
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.panel-content p {
+    margin-bottom: 15px;
+    color: var(--dark-text);
+}
+
+.divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--dark-brown), transparent);
+    margin: 20px 0;
+    border-top: 2px dashed var(--primary-brown);
+}
+
+.hobbies-text {
+    font-weight: bold;
+    color: var(--primary-brown);
+    margin-top: 15px;
+}
+
+.hobbies-list {
+    list-style: none;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.hobbies-list li {
+    margin: 8px 0;
+    padding-left: 20px;
+    position: relative;
+    color: var(--dark-text);
+}
+
+.hobbies-list li::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: var(--accent-orange);
+}
+
+/* Skills Section */
+.skill-category {
+    margin-bottom: 20px;
+}
+
+.skill-category h3 {
+    font-size: 1rem;
+    color: var(--primary-brown);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skill-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, #C97E4A 0%, #A8956A 100%);
+    color: #F5F0E8;
+    padding: 6px 12px;
+    border: 2px solid var(--dark-brown);
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 0 var(--dark-brown);
+    transition: all 0.2s ease;
+}
+
+.skill-tag:hover {
+    transform: translateY(-2px);
+}
+
+/* CTA Section */
+.cta-section {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.cta-section p {
+    font-weight: bold;
+    color: var(--accent-red);
+    margin-bottom: 15px;
+}
+
+.tavern-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #A85C5C 0%, #8B4D4D 100%);
+    color: #F5F0E8;
+    padding: 12px 24px;
+    border: 2px solid var(--dark-brown);
+    border-radius: 4px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 3px 0 var(--dark-brown);
+    transition: all 0.2s ease;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.tavern-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 var(--dark-brown);
+}
+
+.tavern-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 var(--dark-brown);
+}
+
+/* Footer */
+.tavern-footer {
+    background: linear-gradient(135deg, #7A6B62 0%, #8B7D76 100%);
+    border: 3px solid var(--dark-brown);
+    border-radius: 6px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 
+        0 3px 0 var(--dark-brown),
+        0 6px 0 rgba(0, 0, 0, 0.2);
+}
+
+.footer-content h3 {
+    font-size: 1.3rem;
+    color: var(--gold);
+    text-shadow: 1px 1px 0 var(--dark-brown);
+    margin-bottom: 20px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.social-link {
+    display: inline-block;
+    background: linear-gradient(135deg, #C97E4A 0%, #A8956A 100%);
+    color: #F5F0E8;
+    padding: 8px 16px;
+    border: 2px solid var(--dark-brown);
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: bold;
+    box-shadow: 0 2px 0 var(--dark-brown);
+    transition: all 0.2s ease;
+}
+
+.social-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 0 var(--dark-brown);
+}
+
+.footer-text {
+    font-size: 0.85rem;
+    color: var(--cream);
+    text-shadow: 1px 1px 0 var(--dark-brown);
+}
+
+/* Projects Section */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    background: linear-gradient(135deg, #F9F5F0 0%, #F3EFEA 100%);
+    border: 2px solid var(--primary-brown);
+    border-radius: 4px;
+    padding: 20px;
+    box-shadow: 0 2px 0 var(--dark-brown);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: pointer;
+    position: relative;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 2px,
+            rgba(139, 69, 19, 0.05) 2px,
+            rgba(139, 69, 19, 0.05) 4px
+        );
+    pointer-events: none;
+    border-radius: 2px;
+}
+
+.project-card h3 {
+    font-size: 1.1rem;
+    color: var(--primary-brown);
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.project-card p {
+    font-size: 0.85rem;
+    color: var(--dark-text);
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+.project-card .tech-stack {
+    font-size: 0.75rem;
+    color: var(--primary-brown);
+    font-weight: bold;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.project-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 0 var(--dark-brown);
+    background: linear-gradient(135deg, #FFFACD 0%, #FFFFE0 100%);
+}
+
+.project-card:active {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 0 var(--dark-brown);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .tavern-main {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tavern-title {
+        font-size: 1.8rem;
+    }
+
+    .tavern-subtitle {
+        font-size: 1rem;
+    }
+
+    .panel-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .panel-content {
+        padding: 15px;
+        font-size: 0.8rem;
+    }
+
+    .skill-tags {
+        gap: 6px;
+    }
+
+    .skill-tag {
+        padding: 4px 8px;
+        font-size: 0.65rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .tavern-container {
+        padding: 10px;
+    }
+
+    .tavern-header {
+        padding: 20px 10px;
+        margin-bottom: 20px;
+    }
+
+    .tavern-title {
+        font-size: 1.3rem;
+    }
+
+    .tavern-subtitle {
+        font-size: 0.8rem;
+    }
+
+    .tavern-main {
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .panel-content {
+        padding: 12px;
+        font-size: 0.7rem;
+    }
+
+    .panel-header h2 {
+        font-size: 1rem;
+    }
+
+    .social-links {
+        gap: 8px;
+    }
+
+    .social-link {
+        padding: 6px 12px;
+        font-size: 0.7rem;
+    }
+}
+
+/* Animations */
+@keyframes pixelBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.tavern-section {
+    animation: none;
+}
+
+/* Pixel art decoration */
+.tavern-section::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    background: 
+        linear-gradient(45deg, var(--gold) 25%, transparent 25%),
+        linear-gradient(-45deg, var(--gold) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, var(--gold) 75%),
+        linear-gradient(-45deg, transparent 75%, var(--gold) 75%);
+    background-size: 10px 10px;
+    background-position: 0 0, 0 5px, 5px -5px, -5px 0px;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* Corner decorations */
+.pixel-decoration {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.15;
+}
+
+.pixel-decoration.top-left {
+    top: 20px;
+    left: 20px;
+    background: 
+        linear-gradient(45deg, var(--gold) 25%, transparent 25%),
+        linear-gradient(-45deg, var(--gold) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, var(--gold) 75%),
+        linear-gradient(-45deg, transparent 75%, var(--gold) 75%);
+    background-size: 15px 15px;
+    background-position: 0 0, 0 7.5px, 7.5px -7.5px, -7.5px 0px;
+    animation: rotate 20s linear infinite;
+}
+
+.pixel-decoration.top-right {
+    top: 20px;
+    right: 20px;
+    background: 
+        linear-gradient(45deg, var(--accent-orange) 25%, transparent 25%),
+        linear-gradient(-45deg, var(--accent-orange) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, var(--accent-orange) 75%),
+        linear-gradient(-45deg, transparent 75%, var(--accent-orange) 75%);
+    background-size: 15px 15px;
+    background-position: 0 0, 0 7.5px, 7.5px -7.5px, -7.5px 0px;
+    animation: rotate 20s linear infinite reverse;
+}
+
+.pixel-decoration.bottom-left {
+    bottom: 20px;
+    left: 20px;
+    background: 
+        linear-gradient(45deg, var(--accent-orange) 25%, transparent 25%),
+        linear-gradient(-45deg, var(--accent-orange) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, var(--accent-orange) 75%),
+        linear-gradient(-45deg, transparent 75%, var(--accent-orange) 75%);
+    background-size: 15px 15px;
+    background-position: 0 0, 0 7.5px, 7.5px -7.5px, -7.5px 0px;
+    animation: rotate 20s linear infinite;
+}
+
+.pixel-decoration.bottom-right {
+    bottom: 20px;
+    right: 20px;
+    background: 
+        linear-gradient(45deg, var(--gold) 25%, transparent 25%),
+        linear-gradient(-45deg, var(--gold) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, var(--gold) 75%),
+        linear-gradient(-45deg, transparent 75%, var(--gold) 75%);
+    background-size: 15px 15px;
+    background-position: 0 0, 0 7.5px, 7.5px -7.5px, -7.5px 0px;
+    animation: rotate 20s linear infinite reverse;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
